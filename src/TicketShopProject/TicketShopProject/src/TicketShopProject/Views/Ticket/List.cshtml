@@ -1,0 +1,20 @@
+﻿ 
+<div>
+    <h2> All concerts  shown here </h2>
+</div>
+
+<h2> @Model.CurrentCategory </h2>
+
+@{
+
+    foreach (var ticket in Model.Tickets)
+
+    {
+        <div>
+            <h4> Ticket Name: @ticket.Name</h4>
+            <p>Price : @ticket.Price.ToString() </p>
+
+        </div>
+
+    }
+}
