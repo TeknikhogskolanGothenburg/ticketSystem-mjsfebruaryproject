@@ -11,7 +11,7 @@ namespace TicketShopProject.Data.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
-        public List<Ticket> Drinks { get; set; }
+        public List<Ticket> Tickets  { get; set; }
 
 
     }

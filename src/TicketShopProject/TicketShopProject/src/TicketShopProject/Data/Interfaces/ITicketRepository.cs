@@ -9,7 +9,7 @@ namespace TicketShopProject.Data.Interfaces
   public  interface ITicketRepository
     {
         IEnumerable<Ticket> Tickets  { get; }
-        IEnumerable<Ticket> PreferredTickets { get; }
-        Ticket GetDrinkById(int TicketId );
+        IEnumerable<Ticket> PreferredTickets  { get; }
+        Ticket GetTicketkById(int ticketId );
     }
 }

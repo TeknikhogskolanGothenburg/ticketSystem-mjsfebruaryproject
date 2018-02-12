@@ -9,10 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
-//using TicketShopProject.Data;
-//using Microsoft.EntityFrameworkCore;
+using TicketShopProject.Data;
+using Microsoft.EntityFrameworkCore;
 using TicketShopProject.Data.Interfaces;
 using TicketShopProject.Data.Mocks;
+using TicketShopProject.Data.Repositories;
 //using DrinkAndGo.Data.Interfaces;
 //using DrinkAndGo.Data.Models;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -25,19 +26,21 @@ namespace TicketShopProject
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         private IConfigurationRoot _configurationRoot;
-        //public Startup(IHostingEnvironment hostingEnvironment)
-        ////{
-        ////    _configurationRoot = new ConfigurationBuilder()
-        ////        .SetBasePath(hostingEnvironment.ContentRootPath)
-        ////        .AddJsonFile("appsettings.json")
-        ////        .Build();
-        //}
+        public Startup(IHostingEnvironment hostingEnvironment)
+        {
+            _configurationRoot = new ConfigurationBuilder()
+                .SetBasePath(hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json")
+                .Build();
+        }
         public void ConfigureServices(IServiceCollection services)
         {
+              services.AddDbContext<AppDbContext>(options =>
+               options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
+            //Authentication, Identity config
 
-
-            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
-            services.AddTransient<ITicketRepository, MockTicketRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ITicketRepository, TicketRepository>();
             services.AddMvc();
         }
 

@@ -7,7 +7,7 @@ using TicketShopProject.Data.Models;
 
 namespace TicketShopProject.Data.Mocks
 {
-    public class MockCategoryRepository : ICategoryRepository
+    public class MockCategoryRepository : ICategoryRepository // maybe small spelling will cause a problem
     {
         public IEnumerable<Category> Categories
         {
