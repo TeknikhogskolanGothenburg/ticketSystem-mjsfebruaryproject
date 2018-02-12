@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 //using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using TicketShopProject.Data;
 using Microsoft.EntityFrameworkCore;
 using TicketShopProject.Data.Interfaces;
-using TicketShopProject.Data.Mocks;
 using TicketShopProject.Data.Repositories;
+using Microsoft.AspNetCore.Http;
+using TicketShopProject.Data.Models;
 //using DrinkAndGo.Data.Interfaces;
 //using DrinkAndGo.Data.Models;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -41,7 +37,12 @@ namespace TicketShopProject
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ITicketRepository, TicketRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShoppingCart.GetCart(sp));
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,8 +52,10 @@ namespace TicketShopProject
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
-            //app.UseSession();
+            DbInitializer.Seed(app);
+          
             //app.UseIdentity();
 
 

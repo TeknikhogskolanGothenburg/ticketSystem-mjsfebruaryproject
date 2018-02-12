@@ -15,8 +15,8 @@ namespace TicketShopProject.Data.Mocks
             {
                 return new List<Category>
                      {
-                         new Category { CategoryName = "Music-Concert-Ticket", Description = "All alcoholic drinks" },
-                         new Category { CategoryName = "Teater-Concert-Ticket", Description = "All non-alcoholic drinks" }
+                         new Category { CategoryName = "Music-Concert-Ticket", Description = "All Music COncert Tickets" },
+                         new Category { CategoryName = "Movie-Ticket", Description = "All Film Tickets" }
                      };
             }
         }

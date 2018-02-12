@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore; 
 
 namespace TicketShopProject.Data.Models
 {
@@ -19,5 +20,8 @@ namespace TicketShopProject.Data.Models
         public bool InStock { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+
+
+       
     }
 }
