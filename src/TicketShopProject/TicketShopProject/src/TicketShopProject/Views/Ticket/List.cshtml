@@ -1,5 +1,4 @@
-﻿ 
-<div>
+﻿ <div>
     <h2> All Concerts  Ticket shown here </h2>
 </div>
 
@@ -8,34 +7,10 @@
 
 @{
 
-        foreach (Ticket   ticket in Model.Tickets)
+    foreach ( TicketShopProject.Data.Models.Ticket  ticket in Model.Tickets)
 
-        {
-           @Html.Partial("TicketsSummary",ticket )
+    {
+           @Html.Partial("TicketSummary",ticket )
 
         }
     }
-
-@*@{*@
-
-@*foreach ( var ticket in Model.Tickets) video 20 
-
-{
-<div class="col -sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-        <img src="@ticket.ImageThumbnailUrl" alt="" />
-
-        <div class="caption">
-            <h3 class="pull-right">@ticket.Price.ToString("c")</h3>
-            <h3>
-                <a>@ticket.Name</a>
-            </h3>
-            <p> @ticket.ShortDescription</p>
-
-        </div>
-    </div>
-</div>
-
-}
-
-}*@

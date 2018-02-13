@@ -54,7 +54,7 @@ namespace TicketShopProject
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvcWithDefaultRoute();
-            DbInitializer.Seed(app);
+            //DbInitializer.Seed(app);
           
             //app.UseIdentity();
 
