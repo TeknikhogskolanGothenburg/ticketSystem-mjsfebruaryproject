@@ -53,9 +53,21 @@ namespace TicketShopProject
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseMvcWithDefaultRoute();
-            //DbInitializer.Seed(app);
-          
+            //app.UseMvcWithDefaultRoute();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                   name: "categoryfilter",
+                   template: "Ticket/{action}/{category?}",
+                   defaults: new { Controller = "Ticket", action = "List" });
+
+                routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{Id?}");
+            });
+            DbInitializer.Seed(app);
+
             //app.UseIdentity();
 
 
