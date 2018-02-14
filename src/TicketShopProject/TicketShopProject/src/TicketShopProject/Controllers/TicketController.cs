@@ -34,7 +34,7 @@ namespace TicketShopProject.Controllers
             }
             else
             {
-                if (string.Equals("Alcoholic", _category, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals("Music-Concert-Taickets", _category, StringComparison.OrdinalIgnoreCase))
                     tickets = _ticketRepository.Tickets.Where(p => p.Category.CategoryName.Equals("Music-Concert-Ticket")).OrderBy(p => p.Name);
                 else
                     tickets = _ticketRepository.Tickets.Where(p => p.Category.CategoryName.Equals("Movie-Ticket")).OrderBy(p => p.Name);
