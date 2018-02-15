@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TicketShopProject.Data.Interfaces;
 using TicketShopProject.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +22,7 @@ namespace TicketShopProject.Controllers
             _shoppingCart = shoppingCart;
         }
 
-        //[Authorize]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
@@ -30,29 +31,29 @@ namespace TicketShopProject.Controllers
         //[HttpPost]
         //[Authorize]
 
-        //public IActionResult Checkout(Order order)
-        //{
-        //    var items = _shoppingCart.GetShoppingCartItems();
-        //    _shoppingCart.ShoppingCartItems = items;
-        //    if (_shoppingCart.ShoppingCartItems.Count == 0)
-        //    {
-        //        ModelState.AddModelError("", "Your card is empty, add some tickets first");
-        //    }
+        public IActionResult Checkout(Order order)
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your card is empty, add some tickets first");
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        _orderRepository.CreateOrder(order);
-        //        _shoppingCart.ClearCart();
-        //        return RedirectToAction("CheckoutComplete");
-        //    }
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoutComplete");
+            }
 
-        //    return View(order);
-        //}
+            return View(order);
+        }
 
-        //public IActionResult CheckoutComplete()
-        //{
-        //    ViewBag.CheckoutCompleteMessage = "Thanks for your order! :) ";
-        //    return View();
-        //}
+        public IActionResult CheckoutComplete()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thanks for your order! :) ";
+            return View();
+        }
     }
 }
