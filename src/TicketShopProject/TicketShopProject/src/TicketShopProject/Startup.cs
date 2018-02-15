@@ -10,7 +10,6 @@ using TicketShopProject.Data.Interfaces;
 using TicketShopProject.Data.Repositories;
 using Microsoft.AspNetCore.Http;
 using TicketShopProject.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 //using DrinkAndGo.Data.Interfaces;
 //using DrinkAndGo.Data.Models;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -36,8 +35,6 @@ namespace TicketShopProject
                options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
             //Authentication, Identity config
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-               .AddEntityFrameworkStores<AppDbContext>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ITicketRepository, TicketRepository>();
 
@@ -56,7 +53,6 @@ namespace TicketShopProject
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseIdentity(); 
             //app.UseMvcWithDefaultRoute();
 
             app.UseMvc(routes =>

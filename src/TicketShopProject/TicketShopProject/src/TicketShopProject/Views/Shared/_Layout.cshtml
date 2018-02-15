@@ -11,7 +11,7 @@
     <title>TicketShopProject</title>
 </head>
 <body>
-     <nav class="navbar navbar-inverse" >
+     <nav class="navbar navbar-inverse navbar-fixed-top" >
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#navbar" arial-expanded ="false" arial-controlla ="navbar" >
@@ -26,11 +26,9 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index"> Home</a> </li>
                     @await Component.InvokeAsync("CategoryMenu")
-                  
                     <li><a asp-controller="Contact" asp-action="Index">Contact us</a> </li>
                     
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                    @await Html.PartialAsync("LoginPartial")
                 </ul>
                 
                 
