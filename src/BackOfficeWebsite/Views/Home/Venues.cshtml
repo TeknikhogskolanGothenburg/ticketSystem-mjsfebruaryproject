@@ -1,0 +1,35 @@
+﻿<form method="post">
+    Venue name: <input type="text" name="Vname" value=""><br>
+    Address: <input type="text" name="Address" value=""><br>
+    City: <input type="text" name="City" value=""><br>
+    Country: <input type="text" name="Country" value=""><br>
+    <input type="submit" />
+
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label></label>
+        <input class="form-control" disabled />
+    </div>
+    <div class="form-group" hidden="hidden">
+        <label></label>
+        @if (Model.IsEmailConfirmed)
+        {
+            <div class="input-group">
+                <input class="form-control" />
+                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+            </div>
+        }
+        else
+        {
+            <input class="form-control" />
+            <button asp-action="SendVerificationEmail" class="btn btn-link"> </button>
+        }
+        <span class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label></label>
+        <input />
+        <span class="text-danger"></span>
+    </div>
+</form>

@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseRepository", "DatabaseRepository\DatabaseRepository.csproj", "{B32B9919-BFF2-48C0-945C-01D2945BD57B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentProvider", "PaymentProvider\PaymentProvider.csproj", "{57C5E6A3-A743-48A6-BE15-A581F201A15C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentProvider", "PaymentProvider\PaymentProvider.csproj", "{57C5E6A3-A743-48A6-BE15-A581F201A15C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApiOne", "RestApiOne\RestApiOne.csproj", "{A28A1B19-79E5-4238-8590-9E76FD29D2AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketEngineClassLibrary", "TicketEngineClassLibrary\TicketEngineClassLibrary.csproj", "{F06E3F53-F7A3-408D-A023-B6149FD6F0D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{57C5E6A3-A743-48A6-BE15-A581F201A15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C5E6A3-A743-48A6-BE15-A581F201A15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C5E6A3-A743-48A6-BE15-A581F201A15C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A28A1B19-79E5-4238-8590-9E76FD29D2AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28A1B19-79E5-4238-8590-9E76FD29D2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28A1B19-79E5-4238-8590-9E76FD29D2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28A1B19-79E5-4238-8590-9E76FD29D2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06E3F53-F7A3-408D-A023-B6149FD6F0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06E3F53-F7A3-408D-A023-B6149FD6F0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06E3F53-F7A3-408D-A023-B6149FD6F0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06E3F53-F7A3-408D-A023-B6149FD6F0D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

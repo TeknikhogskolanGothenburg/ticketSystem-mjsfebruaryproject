@@ -1,0 +1,18 @@
+﻿
+
+ <div>
+    <h2> All Concerts  Ticket shown here </h2>
+</div>
+
+<h2> @Model.CurrentCategory </h2>
+
+
+@{
+
+    foreach ( TicketShopProject.Data.Models.Ticket  ticket in Model.Tickets)
+
+    {
+           @Html.Partial("TicketSummary",ticket )
+
+        }
+    }

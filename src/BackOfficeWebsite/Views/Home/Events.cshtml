@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "CONCERT!";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    EventName: <input type="text" name="name" value=""><br>
+    EventDescription: <input type="text" name="description" value=""><br>
+
+
+    LongEventDescription: <input type="text" name="longdescription" value=""><br>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label></label>
+        <input  class="form-control" disabled />
+    </div>
+    <div class="form-group" hidden="hidden">
+        <label ></label>
+        @if (Model.IsEmailConfirmed)
+        {
+            <div class="input-group">
+                <input  class="form-control" />
+                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+            </div>
+        }
+        else
+        {
+            <input   class="form-control" />
+            <button asp-action="SendVerificationEmail" class="btn btn-link"> </button>
+        }
+        <span   class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label></label>
+        <input  />
+        <span   class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-default">Save</button>
+    <input type="submit" />
+</form>
+
+
+
+
+
+
+
+
+
+
+

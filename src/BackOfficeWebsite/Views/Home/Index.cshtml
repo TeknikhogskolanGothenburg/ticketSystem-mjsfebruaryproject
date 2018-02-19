@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"    typeof=" "  content="width=device-width, initial-scale=1"  vocab=" "  >
+ 
+</head>
+<body>
+
+    <div id="startt" class="modal">
+
+        <form class="modal-content animate" action="/action_page.php">
+            <div>
+               
+            </div>
+            <div class="container">
+                <div>
+                <label for="username"><b>User Name</b></label>
+                <input type="text" placeholder="" name="username" required>
+                    </div>
+
+                <div>
+                <label for="password1"><b>Password</b></label>
+                <input type="password" placeholder="" name="password1" required>
+                    </div>
+
+
+                 <div>
+
+                <button type="submit">LogIn</button>
+                     </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    @*<button onclick="document.getElementById('startt').style.display='block'" style="width:inherit;"> LogIn </button>
+        <div id="startt" class="modal">*@
+
+
+
+
+    ///
+
+    <script>
+
+        var modal = document.getElementById('startt');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    @*<label for="username"><b>User Name</b></label>
+        <input type="text" placeholder="" name="username" required>
+        <label for="password1"><b>Password</b></label>
+        <input type="password" placeholder="" name="password1" required>*@
+</body>
+</html>
