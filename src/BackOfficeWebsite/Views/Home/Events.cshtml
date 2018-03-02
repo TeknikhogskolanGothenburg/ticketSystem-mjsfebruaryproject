@@ -1,52 +1,66 @@
-﻿@{
-    ViewData["Title"] = "CONCERT!";
+﻿@using TicketEngineClassLibrary
+@model TicketEvent
+@{
+    ViewData["Title"] = "Enter  New Venues To The database ";
 }
 <h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="addevent" method="post">
+                <div class="form-group" method="post">
+                    <label> Event Name</label>
+                    <input class="form-control" id="EventNameTxt" required />
+                    <small id="Info" class="form-text text-muted">Please enter a name for your Event </small>
+                </div>
+                <div class="form-group" method="post">
+                    <label> Event Description</label>
 
-<form method="post">
-    EventName: <input type="text" name="name" value=""><br>
-    EventDescription: <input type="text" name="description" value=""><br>
+                    <textarea rows="4" cols="50" class="form-control" id="DescriptionTxt" placeholder="Enter Event Description"></textarea>
+                </div>
+                <div class="form-group" method="post">
+                    <label>Price</label>
+                    <input class="form-control" id="PriceTxt" required />
+                    <small id="Info" class="form-text text-muted">Please Price of the event </small>
+                </div>
 
-
-    LongEventDescription: <input type="text" name="longdescription" value=""><br>
-
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label></label>
-        <input  class="form-control" disabled />
+                <div class="form-group" method="post">
+                    <button type="button" class="AddEventBtn" id="AddEventBtn" name="AddEventBtn" onclick="myFunction()">Creat Event</button>
+                </div>
+            </form>
+        </section>
     </div>
-    <div class="form-group" hidden="hidden">
-        <label ></label>
-        @if (Model.IsEmailConfirmed)
-        {
-            <div class="input-group">
-                <input  class="form-control" />
-                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
-            </div>
+</div>
+<script>
+    function myFunction() {
+        var dataType = 'application/json'
+
+        var datalist1 = {
+            EventName: $("#EventNameTxt").val(),
+            EventHtmlDescription: $("#DescriptionTxt").val(),
+            TicketEventPrice: $("#PriceTxt").val(),
         }
-        else
-        {
-            <input   class="form-control" />
-            <button asp-action="SendVerificationEmail" class="btn btn-link"> </button>
-        }
-        <span   class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label></label>
-        <input  />
-        <span   class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-default">Save</button>
-    <input type="submit" />
-</form>
 
 
+        // convert the object into a json string
 
 
+        // simple ajax call to post your json data
 
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:54874/Event/",
+            dataType: 'application/json',
+            contentType: dataType,
+            data: JSON.stringify(datalist1),
+            success: alertFunction()
+        });
 
-
-
-
-
-
+        document.getElementById("addevent").reset();
+    };
+</script>
+<script>
+    function alertFunction() {
+        alert(" You have added new Event To the database ");
+    }
+</script>

@@ -1,66 +1,32 @@
-﻿@{
-    Layout = null;
+﻿@using TicketEngineClassLibrary
+@model List<Venue>
+@{
+    ViewData["Title"] = "Venues List";
 }
+<h2>Venues List</h2>
+<button type="button" class="btn btn-default" onclick="location.href='/Home/CreatVenue'">Add Venue(s)</button>
 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport"    typeof=" "  content="width=device-width, initial-scale=1"  vocab=" "  >
- 
-</head>
-<body>
-
-    <div id="startt" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php">
-            <div>
-               
-            </div>
-            <div class="container">
-                <div>
-                <label for="username"><b>User Name</b></label>
-                <input type="text" placeholder="" name="username" required>
-                    </div>
-
-                <div>
-                <label for="password1"><b>Password</b></label>
-                <input type="password" placeholder="" name="password1" required>
-                    </div>
-
-
-                 <div>
-
-                <button type="submit">LogIn</button>
-                     </div>
-
+<div class="col-md-venues" column-count="3">
+    @if (Model != null)
+    {
+        foreach (Venue venue in Model)
+        {
+            <div class="col-md-test">
+                <section>
+                    <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="get">
+                        <div class="form-group">
+                            <label>@venue.VenueName</label>
+                            <div class="picture">
+                                <img class="venueimg" src="https://i.pinimg.com/736x/54/72/b6/5472b6c2b81b0a25daed044db5646b77--sloth-humor-sloth-memes.jpg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default">View/Edit Venue</button>
+                        </div>
+                    </form>
+                </section>
             </div>
 
-        </form>
-    </div>
-
-    @*<button onclick="document.getElementById('startt').style.display='block'" style="width:inherit;"> LogIn </button>
-        <div id="startt" class="modal">*@
-
-
-
-
-    ///
-
-    <script>
-
-        var modal = document.getElementById('startt');
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
         }
-    </script>
-
-    @*<label for="username"><b>User Name</b></label>
-        <input type="text" placeholder="" name="username" required>
-        <label for="password1"><b>Password</b></label>
-        <input type="password" placeholder="" name="password1" required>*@
-</body>
-</html>
+    }
+</div>

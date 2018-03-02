@@ -1,93 +1,125 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BackOfficeWebsite.Models;
 using TicketEngineClassLibrary;
 using TicketSystem.RestApiClient;
-using System.Collections.Generic;
+
 
 namespace BackOfficeWebsite.Controllers
 {
     public class HomeController : Controller
     {
 
+
         VenueApi venueApi = new VenueApi();
-         
-        Ordermanagment ordermanagmentApi = new Ordermanagment();
+        EventApi eventApi = new EventApi();
+        
         public IActionResult Index()
         {
-            return View();
-        }
-        
-
-        public IActionResult Venues(string VenueName, string address, string city, string country)
-        {
-            if (!string.IsNullOrEmpty(VenueName))
-            {
-                TicketApi ticketApi = new TicketApi();
-                ticketApi.VenuesAdd(new Venue()
-                {
-                    VenueName = VenueName,
-                    Address = address,
-                    City = city,
-                    Country = country
-                });
-            }
-            return View();
-           
-             //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-
-
-        }
-
-        public IActionResult Events(string name, string description)
-        {
-            if (!string.IsNullOrEmpty(name))
-            {
-                TicketApi ticketApi = new TicketApi();
-                ticketApi.EventsAdd(new TicketEvent()
-                {
-                    EventName = name,
-                    EventHtmlDescription = description
-                });
-            }
-            return View();
-
-            //else
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-
-
-        }
-
-
-
-        public IActionResult Order()
-        {
-            List<Order> orderList = new List<Order> { };
-            //orderList = ordermanagmentApi.GetAllOrders();
-
+            
             if (User.Identity.IsAuthenticated)
             {
-                return View(orderList);
+                return RedirectToAction("Venues");
             }
             else
             {
                 return RedirectToAction("Login", "Account");
             }
         }
-        public IActionResult Contact()
+
+        public IActionResult Venues()
         {
-            ViewData["Message"] = "Your contact page.";
+            List<Venue> venueList = new List<Venue> { };
+            venueList = venueApi.VenueGet();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(venueList);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        public IActionResult Events()
+        {
+            List<TicketEvent> eventList = new List<TicketEvent> { };
+            eventList = eventApi.GetAllEvents();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(eventList);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        public IActionResult Order(string query)
+        {
+            return View();
+        }
+
+        public IActionResult CreatVenue()
+        {
+            Venue venue = new Venue();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(venue);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+
+        
+        public IActionResult CreatEvent ()
+        {
+            TicketEvent ticketevent = new TicketEvent();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(ticketevent);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        public IActionResult DateAdd()
+        {
+            VenueEventModel hybrid = new VenueEventModel();
+            hybrid.venues = venueApi.VenueGet();
+            hybrid.events = eventApi.GetAllEvents();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(hybrid);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+       
+       
+
+        public IActionResult About()
+        {
 
             return View();
         }
-        public IActionResult About()
+
+        public IActionResult Contact()
         {
-            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
@@ -98,3 +130,4 @@ namespace BackOfficeWebsite.Controllers
         }
     }
 }
+
