@@ -1,13 +1,13 @@
 ﻿@using TicketEngineClassLibrary
 @model Venue
 @{
-    ViewData["Title"] = "Enter  New Venus To the database ";
+    ViewData["Title"] = "Enter new venues i to database ";
 }
 <h2>@ViewData["Title"]</h2>
 <div class="row">
     <div class="col-md-4">
         <section>
-            <form id="addvenue" method="post">
+            <form id="creatvenue" method="post">
                 <div class="form-group" method="post">
                     <label>Name</label>
                     <input class="form-control" id="NameTxt" required />
@@ -16,21 +16,21 @@
                 <div class="form-group" method="post">
                     <label>Address</label>
                     <input class="form-control" id="AddressTxt" required />
-                    <small id="Info" class="form-text text-muted">Please enter the address </small>
+                    <small id="Info" class="form-text text-muted">Please enter a name for your Venue </small>
                 </div>
 
                 <div class="form-group" method="post">
                     <label>City</label>
                     <input class="form-control" id="CityTxt" required />
-                    <small id="Info" class="form-text text-muted">Please enter a name the city  </small>
+                    <small id="Info" class="form-text text-muted">Please enter a name for your Venue </small>
                 </div>
                 <div class="form-group" method="post">
                     <label>Country</label>
                     <input class="form-control" id="CountryTxt" required />
-                    <small id="Info" class="form-text text-muted">Please enter a name of the country </small>
+                    <small id="Info" class="form-text text-muted">Please enter a name for your Venue </small>
                 </div>
                 <div class="form-group" method="post">
-                    <button type="button" class="AddVenueBtn" id="AddVenueBtn" name="AddVenueBtn" onclick="myFunction()"> Creat Venue</button>
+                    <button type="button" class="CreatvenueBtn" id="CreatvenueBtn" name="CreatvenueBtn" onclick="myFunction()"> Creat Venue </button>
                 </div>
             </form>
         </section>
@@ -50,18 +50,18 @@
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:54874/venue/",
+            url: "http://localhost:51775/venue/",
             dataType: 'application/json',
             contentType: dataType,
             data: JSON.stringify(datalist),
             success: alertFunction()
         });
 
-        document.getElementById(" Creat Venue e").reset();
+        document.getElementById("creatvenue").reset();
     };
 </script>
 <script>
     function alertFunction() {
-        alert("You have added a new Venue to the database ");
+        alert("Venue  is added in ti the database");
     }
 </script>
