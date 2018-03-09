@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="DatabaseRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RestApiClient\RestApiClient.csproj" />
     <ProjectReference Include="..\TicketEngineClassLibrary\TicketEngineClassLibrary.csproj" />
   </ItemGroup>

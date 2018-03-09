@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TicketEngineClassLibrary
 {
-    class Ticket
+    public  class Ticket
     {
         public int TicketID { get; set; }
         public int SeatID { get; set; }
